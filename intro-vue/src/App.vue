@@ -36,3 +36,8 @@ export default {
 };
 </script>
 
+<style>
+html {
+    background-image: "https://blenderartists.org/uploads/default/original/4X/9/d/d/9dd7ee0b61133075aaf60207c9c05ebc1ac23cad.jpg";
+}
+</style>

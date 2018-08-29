@@ -1,5 +1,5 @@
 <template>
-<div id='main'>
+<div id='main' >
     <router-view></router-view>
     <div class='header'>
     <Header />
@@ -37,4 +37,11 @@ export default {
     }
 };
 </script>
+
+<style>
+.main,
+html {
+    background-image: url("https://blenderartists.org/uploads/default/original/4X/9/d/d/9dd7ee0b61133075aaf60207c9c05ebc1ac23cad.jpg");
+}
+</style>
 
