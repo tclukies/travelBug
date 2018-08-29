@@ -66,20 +66,3 @@ export default {
 };
 </script>
  
-<style>
-.country-form{
-    margin-top: 120px;
-}
-
-.country-form-button{
-    color: black;
-    background-color: orange;
-    border-radius: 5px;
-    border: 2px solid black;
-}
-
-.country-form-button:hover{
-    color: orange;
-    background-color: black;
-}
-</style>

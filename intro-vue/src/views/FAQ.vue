@@ -23,25 +23,11 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 export default {
-  name: "FAQ",
-  components: {
-    Header,
-    Footer
-  }
+    name: "FAQ",
+    components: {
+        Header,
+        Footer
+    }
 };
 </script>
 
-<style>
-    body{
-      background: cover;
-    }
-
-  .faq-question{
-    color: red;
-  }
-
-  .faq-answer{
-    color: black;
-  }
-
-</style>

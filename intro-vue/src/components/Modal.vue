@@ -60,85 +60,56 @@
 
 <script>
 export default {
-  name: "Modal",
-  data() {
-    return {
-      seen: false,
-      logseen: true,
-      name: "modal",
-      signinUrl: "https://travel-bug-backend.herokuapp.com/profiles",
-      form: {
-        username: "",
-        password: ""
-      },
-      profileData: null
-    };
-  },
-  mounted() {
-    fetch(this.signinUrl, {
-      method: "get",
-      mode: "cors",
-      credentials: "same-origin",
-      headers: new Headers({ "Content-Type": "application/json" })
-    })
-      .then(resp => resp.json())
-      .then(resp => {
-        this.profileData = resp;
-      });
-  },
+    name: "Modal",
+    data() {
+        return {
+            seen: false,
+            logseen: true,
+            name: "modal",
+            signinUrl: "https://travel-bug-backend.herokuapp.com/profiles",
+            form: {
+                username: "",
+                password: ""
+            },
+            profileData: null
+        };
+    },
+    mounted() {
+        fetch(this.signinUrl, {
+            method: "get",
+            mode: "cors",
+            credentials: "same-origin",
+            headers: new Headers({ "Content-Type": "application/json" })
+        })
+            .then(resp => resp.json())
+            .then(resp => {
+                this.profileData = resp;
+            });
+    },
 
-  methods: {
-    verified(userid) {
-      this.$router.push({ path: "main", query: { user: userid } });
-    },
-    notVerified() {
-      document.querySelector("#alertMessage").textContent =
-        "Incorrect username or password. Please try again!";
-    },
-    bool() {
-      for (let i = 0; i < this.profileData.profile.length; i++) {
-        if (
-          document.querySelector("#username").value ===
-            this.profileData.profile[i].username &&
-          document.querySelector("#password").value ===
-            this.profileData.profile[i].password
-        ) {
-          this.verified(this.profileData.profile[i].id);
-        } else {
-          this.notVerified();
+    methods: {
+        verified(userid) {
+            this.$router.push({ path: "main", query: { user: userid } });
+        },
+        notVerified() {
+            document.querySelector("#alertMessage").textContent =
+                "Incorrect username or password. Please try again!";
+        },
+        bool() {
+            for (let i = 0; i < this.profileData.profile.length; i++) {
+                if (
+                    document.querySelector("#username").value ===
+                        this.profileData.profile[i].username &&
+                    document.querySelector("#password").value ===
+                        this.profileData.profile[i].password
+                ) {
+                    this.verified(this.profileData.profile[i].id);
+                } else {
+                    this.notVerified();
+                }
+            }
         }
-      }
     }
-  }
 };
 </script>
  
-<style scope>
-
-body {
-  background-color: rgba(247, 178, 49, 0.877);
-}
-
-button {
-  background-color: orange;
-  color:black;
-  border: black solid 2px;
-   border-radius: 5px;
-}
-.modal-container {
-  display: flex;
-  justify-content: center;
-    background-color:orange;
-}
-#signin {
-  display: flex;
-  flex-wrap: column;
-}
-
-#signButton {
-   background-color: orange;
-  color:black;
-  border: black solid 2px;
-  border-radius: 5px;
-}
-</style>

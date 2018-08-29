@@ -9,28 +9,12 @@
 
 <script>
 export default {
-  name: 'Footer',
-  data() {
-    return {
-      msg: 'Welcome to Your Vue.js App'
-    };
-  }
+    name: "Footer",
+    data() {
+        return {
+            msg: "Welcome to Your Vue.js App"
+        };
+    }
 };
 </script>
  
-<style>
-  .anchor{
-    text-decoration: none;
-    color: black;
-    background-color: orange;
-    border: 2px solid black;
-    border-radius: 5px;
-    padding-left:3px;;
-    padding-right: 3px;
-  }
-
-  .anchor:hover{
-    color: orange;
-    background-color: black;
-  }
-</style>

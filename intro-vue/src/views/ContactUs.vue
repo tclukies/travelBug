@@ -35,60 +35,11 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 export default {
-  name: "Contact-Us",
-  components: {
-    Header,
-    Footer
-  }
+    name: "Contact-Us",
+    components: {
+        Header,
+        Footer
+    }
 };
 </script>
 
-<style>
-  .contact-body{
-    margin-top: -5vh;
-    background: no-repeat;
-    background-size: 100vw 100vh;
-    background-image: url('http://eskipaper.com/images/monument-valley-4.jpg');
-  }
-
-  .contact-main{
-    display: flex;
-    flex-flow: column wrap;
-  }
-  
-  .contact-h1{
-    color: white;
-  }
-
-  .contact-main-p{
-    color: white;
-  }
-
-  .contact-section{
-    flex-flow: row wrap;
-  }
-
-  .contact-users{
-    display: flex;
-    flex-flow: column wrap;
-    align-content: center;
-  }
-
-  .contact-user{
-    display:flex;
-    flex-flow: column wrap;
-    border: 2px solid orange;
-    width: 30vh;
-    margin: 2vh 0vh 2vh 0vh;
-  }
-
-  .contact-p-user{
-    margin: -.2vh 0vh -.2vh 0vh;
-    color: white;
-  }
-
-  .contact-footer{
-    margin-top: 3vh;
-    margin-bottom: 5vh;
-  }
-</style>
