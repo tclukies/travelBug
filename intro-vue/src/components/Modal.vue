@@ -22,7 +22,6 @@
                                     <label for='login'>New to Travel Bug?</label>
                                 </div>
                                 <div>
-                                    <!-- <b-button class='danger' v-on:click='seen ==! seen, logseen ==! logseen' type='submit' name='button'>Sign up now!</b-button> -->
                                     <button v-on:click.prevent='registerSeen = true,  logseen = false' type='submit' class="signButton" name='button'>Sign up now!</button>
                                 </div>
                                 <div id="alertMessage">
@@ -35,6 +34,8 @@
                         <div v-if='registerSeen'  id='registrationForm'>
                             <form v-on:submit.prevent='checkFields()'>
                                 <h3>We are excited for your new ventures!</h3>
+                                <p class="error-message"></p>
+                                <p class="success-message"></p>
                                 <div>
                                     <input placeholder='First Name' type='text' v-model= "firstName" name='firstName' id='firstName' value=''>
                                 </div>
@@ -127,24 +128,39 @@ export default {
             }
         },
         checkFields() {
-            console.log("hello");
-            console.log(this.firstName);
             let newPost = {
-                "first_name": this.firstName,
-                "last_name": this.lastName,
-                "email": this.email,
-                "username": this.registerUsername,
-                "password": this.registerPassword
+                first_name: this.firstName,
+                last_name: this.lastName,
+                email: this.email,
+                username: this.registerUsername,
+                password: this.registerPassword
             };
-            console.log(newPost);
-            fetch(this.registerUrl, {
-                method: "POST",
-                headers: {
-                    'Accept': "application/json",
-                    "Content-Type": "application/json",
-                },
-                body:  {newPost }
-            }).then(res => res.json());
+            if (
+                this.firstName !== "" &&
+                this.lastName !== "" &&
+                this.email !== "" &&
+                this.registerUsername !== "" &&
+                this.registerPassword !== ""
+            ) {
+                fetch(this.registerUrl, {
+                    method: "POST",
+                    headers: {
+                        Accept: "application/json",
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(newPost)
+                })
+                    .then(res => res.json())
+                    .then(document.querySelector(".success-message").textContent="Profile Created!")
+                    .then(
+                        setTimeout(function() {
+                            location.reload();
+                        }, 1000)
+                    );
+            } else {
+                document.querySelector(".error-message").textContent =
+                    "Please fill out all feilds!";
+            }
         }
     }
 };
