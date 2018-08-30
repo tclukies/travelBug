@@ -12,7 +12,7 @@
                     <slot name='login'>
                         <div v-if='logseen' id='signin'>
                             <form>
-                                <h3>Come Explore!</h3>
+                                <h3 class="modal-h3">Come Explore!</h3>
                                 <div class="login">
                                     <input placeholder='Username' type='text' name='username' id='username' value=''>
                                     <input placeholder='Password' type='password' name='password' id='password' value=''>
@@ -23,7 +23,7 @@
                                 </div>
                                 <div>
                                     <!-- <b-button class='danger' v-on:click='seen ==! seen, logseen ==! logseen' type='submit' name='button'>Sign up now!</b-button> -->
-                                    <button v-on:click='seen ==! seen, logseen ==! logseen' type='submit' class="signButton" name='button'>Sign up now!</button>
+                                    <button v-on:click.prevent='registerSeen = true,  logseen = false' type='submit' class="signButton" name='button'>Sign up now!</button>
                                 </div>
                                 <div id="alertMessage">
                                     <p></p>
@@ -32,29 +32,26 @@
                         </div>
                     </slot>
                     <slot name='register'>
-                        <div v-if='seen' id='registrationForm'>
-                            <form @submit.prevent='sendCredentials()'>
+                        <div v-if='registerSeen'  id='registrationForm'>
+                            <form v-on:submit.prevent='checkFields()'>
                                 <h3>We are excited for your new ventures!</h3>
                                 <div>
-                                    <input placeholder='First Name' type='text' name='firstName' id='firstName' value=''>
+                                    <input placeholder='First Name' type='text' v-model= "firstName" name='firstName' id='firstName' value=''>
                                 </div>
                                 <div>
-                                    <input placeholder='Last Name' type='text' name='lastName' id='lastName' value=''>
+                                    <input placeholder='Last Name' type='text' v-model= "lastName" name='lastName' id='lastName' value=''>
                                 </div>
                                 <div>
-                                    <input placeholder='Email' type='text' name='email' id='email' value=''>
+                                    <input placeholder='Email' type='text' v-model= "email" name='email' id='email' value=''>
                                 </div>
                                 <div>
-                                    <input placeholder='Username' type='text' name='username' id='username' value=''>
+                                    <input placeholder='Username' type='text' v-model= "registerUsername" name='registerUsername' id='username' value=''>
                                 </div>
                                 <div>
-                                    <input placeholder='Password' type='text' name='passWord' id='passWord' value=''>
+                                    <input placeholder='Password' type='text' v-model= "registerPassword" name='registerPassword' id='passWord' value=''>
                                 </div>
                                 <div>
-                                    <input placeholder='Confirm Password' type='text' name='confirmPassword' id='confirmPassword' value=''>
-                                </div>
-                                <div>
-                                    <router-link to='/main' tag='button'>Create Profile</router-link>
+                                    <button type='submit' class="signButton" name='button'>Create Profile</button>
                                 </div>
                             </form>
                         </div>
@@ -70,7 +67,7 @@ export default {
     name: "Modal",
     data() {
         return {
-            seen: false,
+            registerSeen: false,
             logseen: true,
             name: "modal",
             signinUrl: "https://travel-bug-backend.herokuapp.com/profiles",
@@ -78,7 +75,13 @@ export default {
                 username: "",
                 password: ""
             },
-            profileData: null
+            profileData: null,
+            firstName: "",
+            lastName: "",
+            email: "",
+            registerUsername: "",
+            registerPassword: "",
+            registerUrl: "https://travel-bug-backend.herokuapp.com/profiles"
         };
     },
     mounted() {
@@ -122,6 +125,26 @@ export default {
                     this.notVerified();
                 }
             }
+        },
+        checkFields() {
+            console.log("hello");
+            console.log(this.firstName);
+            let newPost = {
+                "first_name": this.firstName,
+                "last_name": this.lastName,
+                "email": this.email,
+                "username": this.registerUsername,
+                "password": this.registerPassword
+            };
+            console.log(newPost);
+            fetch(this.registerUrl, {
+                method: "POST",
+                headers: {
+                    'Accept': "application/json",
+                    "Content-Type": "application/json",
+                },
+                body:  {newPost }
+            }).then(res => res.json());
         }
     }
 };
@@ -239,6 +262,12 @@ export default {
     border-radius: 15px;
     box-shadow: 8px 8px 8px #444545;
     border: 0px;
+}
+.modal-h3 {
+    color: #086788;
+    text-shadow: -2px -2px 2px white, 2px 2px 2px white, -2px 2px 2px white,
+        2px -2px 2px white;
+    font-family: "Slackey";
 }
 /* #username {
     background-color: #9fb1bc;
