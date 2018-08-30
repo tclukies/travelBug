@@ -19,6 +19,7 @@ export default {
 
 <style>
 .footer {
+    text-decoration: none;
     margin-left: 35%;
     margin-right: 35%;
     position: center;
@@ -28,6 +29,11 @@ export default {
     text-align: center;
     background-color: rgba(255, 255, 255, 0.418);
     border-radius: 15px;
+    color: #086788;
+    /* text-shadow: 2px 2px 2px #9fb1bc; */
+    text-shadow: -2px -2px 2px white, 2px 2px 2px white, -2px 2px 2px white,
+        2px -2px 2px white;
+    font-family: "Slackey";
 }
 .first {
     display: flex;

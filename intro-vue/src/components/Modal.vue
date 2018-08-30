@@ -150,6 +150,9 @@ export default {
 
 .new-to {
     text-shadow: none;
+    text-shadow: -2px -2px 2px white, 2px 2px 2px white, -2px 2px 2px white,
+        2px -2px 2px white;
+    font-family: "Slackey";
 }
 #alertMessage {
     text-shadow: none;
@@ -235,6 +238,7 @@ export default {
     background-color: #9fb1bca8;
     border-radius: 15px;
     box-shadow: 8px 8px 8px #444545;
+    border: 0px;
 }
 /* #username {
     background-color: #9fb1bc;
@@ -251,10 +255,14 @@ export default {
     flex-wrap: column;
     justify-content: center;
     align-items: center;
+    font-family: "Simonetta";
 }
 .signButton {
     background-color: #9fb1bc;
     color: #086788;
+    box-shadow: 3px 3px 3px #444545;
+    border: 0px;
+    font-family: "Simonetta";
 }
 form {
     display: flex;

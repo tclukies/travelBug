@@ -21,7 +21,6 @@ var images = [
     "url('http://segundoenfoque.com/wp-content/uploads/2017/08/camboya-segundoenfoque.jpeg')",
     "url('https://www.globotrain.ch/typo3temp/pics/21d7be9a7e.jpg')",
     "url('http://master.as/wp-content/uploads/2017/06/phpFbZ12f572b5a22bcba0_1280x760.jpeg')",
-    "url('https://i.pinimg.com/originals/3c/08/51/3c0851751eee8dd2176f23004643290f.jpg')",
     "url('https://gezgin-cift.webnode.com.tr/_files/200000706-c39fcc4992/12967484_1696177410671621_2910202682994657411_o.jpg')",
     "url('https://i.pinimg.com/originals/23/e2/f8/23e2f8ecd201b4a6f772aa1e4f93a134.jpg')",
     "url('https://i.ytimg.com/vi/Xw2KcAWkHDA/maxresdefault.jpg')",

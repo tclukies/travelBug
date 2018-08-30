@@ -1,32 +1,23 @@
 <template>
-  <div>
-    <div>
-      <h2 class="map-h2">Search the map for locations you want to visit!</h2>
-      <label>
-        <!-- <gmap-autocomplete
-          @place_changed="setPlace">
-        </gmap-autocomplete> -->
-        <!-- <button @click="addMarker">Add</button> -->
-      </label>
-      <br/>
-
+    <div class="map-component">
+        <div class="map-header">
+            <h2 class="map-h2">Search the map for locations you want to visit!</h2>
+        </div>
+        <gmap-map
+        :center="center"
+        :zoom="2"
+        style="width:300px;  height: 200px;"
+        @click = "handleClick"
+        class="gmap-maps"
+        >
+        <gmap-marker
+            :key="index"
+            v-for="(marker, index) in markers"
+            :position="marker.position"
+            @click="center=marker.position"
+        ></gmap-marker>
+        </gmap-map>
     </div>
-    <br>
-    <gmap-map
-      :center="center"
-      :zoom="2"
-      style="width:800px;  height: 500px;"
-      @click = "handleClick"
-      class="gmap-maps"
-    >
-      <gmap-marker
-        :key="index"
-        v-for="(marker, index) in markers"
-        :position="marker.position"
-        @click="center=marker.position"
-      ></gmap-marker>
-    </gmap-map>
-  </div>
 </template>
 
 <script>
@@ -91,10 +82,35 @@ export default {
 };
 </script>
 <style>
-.map-h2{
-    margin-left: -150px;
+.map-component {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
 }
-.gmap-maps{
+.map-header {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #9fb1bca8;
+    border-radius: 15px;
+    box-shadow: 8px 8px 8px #444545;
+    border: 0px;
+    width: 24vw;
+    height: auto;
+    text-align: center;
+    margin-bottom: 2vh;
+}
+.map-h2 {
+    font-size: 1.2em;
+    color: #086788;
+    text-shadow: -1px -1px 1px white, 1px 1px 1px white, -1px 1px 1px white,
+        1px -1px 1px white;
+    font-family: "Slackey";
+}
+.gmap-map {
+    width: 30vh;
     margin-bottom: 20px;
 }
 </style>

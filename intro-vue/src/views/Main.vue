@@ -2,20 +2,22 @@
 <div id='main' >
     <router-view></router-view>
     <div class='header'>
-    <Header />
+        <Header />
     </div>
     <div class='horizontal'>
-    <div>
-    <AddCountry />
+        <div class="add-and-map">
+            <div>
+                <AddCountry />
+            </div>
+            <div>
+                <MapConfig />
+            </div>
+        </div>
+        <div>
+            <Locations />
+        </div>
     </div>
-    <div>
-    <Locations />
-    </div>
-    <div>
-    <MapConfig />
-    </div>
-    </div>
-    <Footer />
+        <Footer />
     </div>
     
 </template>
@@ -23,25 +25,40 @@
 <script>
 import Header from "@/components/Header";
 import AddCountry from "@/components/AddCountry";
-import Locations from "@/components/Locations";
 import MapConfig from "@/components/MapConfig";
+import Locations from "@/components/Locations";
 import Footer from "@/components/Footer";
 export default {
     name: "Main",
     components: {
         Header,
         AddCountry,
-        Locations,
         MapConfig,
+        Locations,
         Footer
     }
 };
 </script>
 
 <style>
-.main,
+body,
 html {
-    background-image: url("https://blenderartists.org/uploads/default/original/4X/9/d/d/9dd7ee0b61133075aaf60207c9c05ebc1ac23cad.jpg");
+    height: 100vh;
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    transition: background-image 2s;
+    background: fixed;
+}
+.horizontal {
+    display: flex;
+    margin-left: 7vh;
+    margin-right: 7vh;
+}
+.add-and-map {
+    display: flex;
+    flex-flow: column;
+    justify-items: center;
+    align-items: center;
 }
 </style>
 
