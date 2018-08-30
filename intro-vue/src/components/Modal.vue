@@ -285,15 +285,6 @@ export default {
         2px -2px 2px white;
     font-family: "Slackey";
 }
-/* #username {
-    background-color: #9fb1bc;
-    color: #086788;
-}
-
-#password {
-    background-color: #9fb1bc;
-    color: #086788;
-} */
 
 #signin {
     display: flex;

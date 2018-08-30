@@ -3,11 +3,12 @@
         <h2 class="location-header">Your Destinations:</h2>
         <ul class="destination-ul">
             <li v-for="post in locationData" :key="post.id" class="destination-li">
-                <h2 class="destination-h3"> {{ post.country_name }}</h2>
+                <div class="moveX">
+                    <h2 class="destination-h3"> {{ post.country_name }}</h2>
+                    <button v-on:click.prevent='deletePost(post.location_post_id)' class="delete-button" name='button'>X</button>
+                </div>
                 <h4 class="destination-goalDate">Date: {{ post.goal_date | moment('dddd, MMMM Do YYYY')}}</h4>
                 <h4 class="destination-activities">Activities: {{ post.activities }}</h4>
-                <!-- <h4> {{post.location_post_id}}</h4> -->
-                <button v-on:click.prevent='deletePost(post.location_post_id)' class="delete-button" name='button'>X</button>
             </li>
         </ul>
     </div>
@@ -64,6 +65,11 @@
         flex-flow: column;
         margin-left: 5vw;
     }
+
+    .moveX{
+        display: flex;
+        justify-content: space-between
+    }
     
     .location-header {
         font-size: 1.2em;
@@ -100,7 +106,14 @@
     }
     
     .delete-button {
-        align-self: flex-end;
+        display:flex;
+        font-size: 1em;
+        background-color: red;
+        height: 5vh;
+        margin-right: 1vw;
+        margin-top: 1vw;
+        color: #086788;
+        border: solid #086788;
     }
 </style>
  
