@@ -14,7 +14,7 @@
         <div>
             <input  v-model='form.visited' placeholder=' True or False' type='text' name='visited' id='visited' value=''>
         </div>
-            <button type='submit' name='button'  class="country-form-button" onClick="setTimeout('history.go(0);',1000)">Add Now!</button>
+            <button type='submit' name='button'  class="country-form-button" >Add Now!</button>
             
     </form>
     </div>
@@ -60,7 +60,10 @@ export default {
                         throw err;
                     }
                     return resp.json();
-                });
+                })
+                .then(setTimeout(function() {
+                            location.reload();
+                        }, 1000))
         }
     }
 };

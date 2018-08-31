@@ -38,7 +38,6 @@
                 .then(resp => resp.json())
                 .then(resp => {
                     this.locationData = resp.posts;
-                    // this.postID = resp.posts.location_post_id 
                 });
         },
     
