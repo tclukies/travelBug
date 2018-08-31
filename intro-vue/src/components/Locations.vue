@@ -2,10 +2,10 @@
     <div class="destination">
         <h2 class="location-header">Your Destinations:</h2>
         <ul class="destination-ul">
-            <li v-for="post in locationData" :key="post.id" class="destination-li">
+            <li  v-for="post in locationData" :key="post.id" class="destination-li">
                 <div class="moveX">
                     <h2 class="destination-h3"> {{ post.country_name }}</h2>
-                    <button v-on:click.prevent='deletePost(post.location_post_id)' class="delete-button" name='button'>X</button>
+                    <button v-bind='post' @click='deletePost(post)' class="delete-button" name='button'>X</button>
                 </div>
                 <h4 class="destination-goalDate">Date: {{ post.goal_date | moment('dddd, MMMM Do YYYY')}}</h4>
                 <h4 class="destination-activities">Activities: {{ post.activities }}</h4>
@@ -24,38 +24,42 @@
                     this.$route.query.user,
                 locationData: null,
                 deleteURL: "https://travel-bug-backend.herokuapp.com/posts/",
-                postID: ''
+                
             };
         },
-        mounted() {
-            fetch(this.locationUrl, {
-                    method: "get",
-                    mode: "cors",
-                    headers: new Headers({
-                        "Content-Type": "application/json"
-                    })
-                })
-                .then(resp => resp.json())
-                .then(resp => {
-                    this.locationData = resp.posts;
-                });
+        created() {
+            this.fetchCountries()
         },
     
         methods: {
-            deletePost(postID) {
+            fetchCountries(){
+                fetch(this.locationUrl, {
+                        method: "get",
+                        mode: "cors",
+                        headers: new Headers({
+                            "Content-Type": "application/json"
+                        })
+                    })
+                    .then(resp => resp.json())
+                    .then(resp => {
+                        this.locationData = resp.posts;
+                    });
+                },  
+            deletePost(post) {
                 {
-                    fetch(this.deleteURL + postID, {
+                    fetch(this.deleteURL + post.location_post_id, {
                             method: "DELETE",
                         })
                         .then(resp => resp.json())
                         .then(json => {return json;})
-                        .then(  setTimeout(function() {
-                            location.reload();
-                        }, 500))
+                        .then(this.locationData = this.locationData.filter((element)  => {
+                            return element.location_post_id !== post.location_post_id
+                        }))
                 }
             }
         }
-    };
+    }
+
 </script>
 
 <style>

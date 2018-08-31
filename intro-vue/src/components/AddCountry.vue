@@ -61,9 +61,9 @@ export default {
                     }
                     return resp.json();
                 })
-                .then(setTimeout(function() {
-                            location.reload();
-                        }, 1000))
+                // .then(setTimeout(function() {
+                //             location.reload();
+                //         }, 1000))
         }
     }
 };
