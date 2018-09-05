@@ -12,7 +12,7 @@
             <textarea  v-model='form.activities' placeholder=' Activities you want to do!' type='text' name='activities' id='activities' value=''>Add activities here!</textarea>
         </div>
         <div>
-            <input  v-model='form.visited' placeholder=' True or False' type='text' name='visited' id='visited' value=''>
+            <input  v-model='form.visited' placeholder=' Visited? True or False' type='text' name='visited' id='visited' value=''>
         </div>
             <button type='submit' name='button'  class="country-form-button" >Add Now!</button>
             
@@ -21,6 +21,7 @@
 </template>
 
 <script>
+// import router from "../router"
 export default {
     name: "AddCountry",
     data() {
@@ -61,9 +62,12 @@ export default {
                     }
                     return resp.json();
                 })
-                // .then(setTimeout(function() {
-                //             location.reload();
-                //         }, 1000))
+                .then(this.$router.push({
+                path: "main",
+                query: {
+                    user: 2
+                }
+                }))
         }
     }
 };
