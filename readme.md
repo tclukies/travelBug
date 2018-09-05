@@ -1,21 +1,29 @@
-# travel-bug-fe
+###Contributors
+Natalie Todd Tom Clukies Ryan McCrory RJ Kirkhope
 
-> Front end of Travel Bug app
+###Travel Bug Description
+Travel bug allows a user to login and create a profile with desired destinations all over the world. Quickly add destinations you would like to visit and check off destinations as you complete your goals.
 
-## Build Setup
+###The Problem
+There isn't an application that allows users to organize national and international vacation timelines and goals.
 
-``` bash
-# install dependencies
-npm install
+###How does Travel Bug solve this problem?
+Travel Bug will allow users to add and cross off locations and timelines to a travel bucketlist.
 
-# serve with hot reload at localhost:8080
-npm run dev
+###Tech used
+Vue.js, Bootstrap-Vue, Express, Knex, CORS, postgreSQL
 
-# build for production with minification
-npm run build
+###Instructions
+1. Fork and clone repo to local directory
+2. $ cd intro-vue
+3. npm install
+4. npm run dev
 
-# build for production and view the bundle analyzer report
-npm run build --report
-```
+###Travel Bug Front End Deployed Link
+https://travel-bug-67eb1.firebaseapp.com/
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+###Travel Bug Back End Deployed Links
+https://travel-bug-backend.herokuapp.com/profiles https://travel-bug-backend.herokuapp.com/posts
+
+###Travel Bug Back End Github Repo
+https://github.com/ryanmccrory83/travelBugBackend
